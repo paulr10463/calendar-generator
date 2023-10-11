@@ -1,0 +1,57 @@
+.mainSection{
+    background-color: black;
+    width: 100%;
+    display: flex;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.mainSection .addCourseSection{
+    background-color: rgb(64, 64, 64);
+    width: 40%;
+    height: 60vb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainSection .addCourseButton{
+    background-color: rgb(50, 153, 108);
+    width: 30%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+}
+.mainSection .addCourseTextField{
+    background-color: rgb(176, 176, 176);
+    width: 50%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+    background-color: rgb(64, 64, 64);
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px solid rgb(50, 153, 108);
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+.mainSection .addCourseButton:hover{
+    background-color: rgb(59, 187, 131);
+}
+.mainSection .addCourseTextField:focus{
+    border-color: rgb(59, 187, 131);   
+}
+.mainSection .scheduleGenerated{
+    background-color: rgb(109, 64, 64);
+    width: 60%;
+    height: 60vb;
+}
+.addCourseSection .addCourseContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0px 10px 0px;  
+}

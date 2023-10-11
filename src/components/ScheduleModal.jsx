@@ -26,8 +26,7 @@ const ScheduleModal =  ({isOpen, onRequestClose }) => {
   };
 
   return (
-    <div>
-      
+    <>
       <Modal
         isOpen={isOpen}
         onRequestClose={onRequestClose}
@@ -42,7 +41,7 @@ const ScheduleModal =  ({isOpen, onRequestClose }) => {
           </div>
         </section>
       </Modal>
-    </div>
+    </>
   );
 }
 
