@@ -40,7 +40,6 @@ function CourseItem({name}) {
 
   return (
     <div className="CourseItem">
-      <button onClick={()=>{console.log(groups)}} value="hola">asdas</button>
       <div className="CourseName">
         <button onClick={handleExpand} type="button">
           <FontAwesomeIcon className="ButtonIcon" icon={titleArrowIcon} style={{ color: "#ffffff", }} />

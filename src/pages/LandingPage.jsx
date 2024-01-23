@@ -24,11 +24,13 @@ function LandingPage() {
       <Header />
       <section className="mainSection">
         <aside className='addCourseSection'>
-          <div className='addCourseContainer'>
-            <input className="addCourseTextField" id='SubjetNameText' type="text" placeholder="Nombre materia" />
-            <input onClick={AddSubject} className="addCourseButton" type="button" value="Añadir materia" /> 
+          <div className='addCourseContainer'>  
+            <form className='addCourseContainer' onSubmit={(e)=> e.preventDefault()}>
+              <label className="addCourse__name"htmlFor="nombre materia">Nombre materia: </label>
+              <input className="addCourseTextField" id='SubjetNameText' type="text" placeholder="Auditoría, Usabilidad" />
+              <button type='submit' onClick={AddSubject} className="addCourseButton">Añadir</button>
+            </form>
           </div>
-
           <div className='courseList'>
             {subjects.map((subject, index) => {
               return <CourseItem key={index} name={subject.name} />
