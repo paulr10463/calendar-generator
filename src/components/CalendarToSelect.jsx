@@ -1,9 +1,10 @@
 import '../styles/CalendarToSelect.css';
 import { useState } from 'react';
 
-function CalendarToSelect() {
+function CalendarToSelect(onScheduleChange) {
   // Declaración del estado inicial de la matriz bidimensional
   const [matriz, setMatriz] = useState([
+    [false, false, false, false, false, false],
     [false, false, false, false, false, false],
     [false, false, false, false, false, false],
     [false, false, false, false, false, false],
@@ -29,6 +30,7 @@ function CalendarToSelect() {
       return filaActual;
     });
     setMatriz(nuevaMatriz);
+    onScheduleChange(nuevaMatriz)
   };
 
   /*const mostrarMatrizEnConsola = () => {
@@ -53,7 +55,7 @@ function CalendarToSelect() {
               <td className='hourCells'>
                 <input 
                   type="text" 
-                  value={`${filaIndex + 8}:00 - ${filaIndex + 9}:00`}
+                  value={`${filaIndex + 7}:00 - ${filaIndex + 8}:00`}
                   disabled
                 />
               </td>

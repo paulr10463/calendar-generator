@@ -7,8 +7,10 @@
 
 .CourseItem .CourseName{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: white;
-    padding: 0.5em;
+    padding: 0.3em 0.8em 0.3em 0.8em;
     background-color: rgb(50, 153, 108);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
@@ -17,51 +19,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(50, 153, 108);
-    border: none;
-    cursor: pointer;
-    margin-right: 1em;
-    border-radius: 5px;
     transition: all 0.3s ease-in-out;
-}
-
-.CourseItem .CourseName button .ButtonIcon{
-    width: 20px;
-    height: 15px;
-}
-
-.CourseItem .CourseName button:hover{
-    background-color: rgb(50, 153, 108);
-}
-
-.CourseItem .CourseGroup {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-around;
-    margin: 0.5em 0 0.5em 0;
-}
-.CourseItem .CourseGroup button{
     background-color: rgb(64, 64, 64);
     padding: 0.5em;
     border: none;   
     justify-content: space-around;
-    margin: 0.5em 0 0.5em 0;
     border-radius: 50%  ;
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
     cursor: pointer;
     
+    
 }
-.CourseItem .CourseGroup button:hover{
+.CourseItem .CourseName button:hover{
     background-color: rgb(45, 45, 45);
 }
 
-.CourseItem .CourseGroup button:hover .fa-trash{
-    color: rgb(229, 15, 15);  
+.CourseItem .CourseName button:hover .fa-plus{
+    color: rgb(50, 153, 108);
 }
-.CourseItem .CourseGroup button .fa-trash{
-    width: 20px;
+
+.CourseItem .CourseName button .fa-plus{
+    width: 10px;
     height: 18px;
     color: white;    
     transition: all 0.1s ease-in;
