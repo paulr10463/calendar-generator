@@ -1,43 +1,65 @@
 import '../styles/CourseItem.css'
-import AddScheduleButton from './AddScheduleButton'
-import { faAngleDown , faTrash, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import GroupSelector from './GroupSelect'
-import { useState , useEffect } from 'react'
+import Group from '../classes/Group'
+import GroupItem from './GroupItem'
+import { useState } from 'react'
+import Subject from '../classes/Subject'
 
-function CourseItem() {
-    const [isExpanded, setIsExpanded] = useState(false);
-    const [titleArrowIcon, setTitleArrowIcon] = useState(faAngleRight);
-    
-    const handleExpand = () => {
-        if(isExpanded){
-            setTitleArrowIcon(faAngleRight);
-        }else{
-            setTitleArrowIcon(faAngleDown);
-        }
-        setIsExpanded(!isExpanded);
+function CourseItem({name}) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [titleArrowIcon, setTitleArrowIcon] = useState(faAngleRight);
+  const [groups, setGroups] = useState([]);
+
+
+  const AddGroup = () => {
+    const newGroup = new Group("GR1");
+    setGroups([...groups, newGroup]);
+    setIsExpanded(true);
+    setTitleArrowIcon(faAngleDown);
+    console.log(groups);
+  }
+
+  const handleExpand = () => {
+    if (isExpanded) {
+      setTitleArrowIcon(faAngleRight);
+    } else {
+      setTitleArrowIcon(faAngleDown);
     }
+    setIsExpanded(!isExpanded);
+  }
+
+  function onDeleteGroupItem(index) {
+    console.log("Index a borrar: " + index );
+    console.log(groups);
+    const newGroups = [...groups];
+    newGroups.splice(index, 1);
+    setGroups(newGroups);
+    console.log(groups);
+  }
 
   return (
-      <div className="CourseItem">
-          <div className="CourseName">
-              <button onClick={handleExpand} type="button">
-                  <FontAwesomeIcon className="ButtonIcon" icon={titleArrowIcon} style={{ color: "#ffffff", }} />
-              </button>
-              <div>Ingeniería de Software</div>
-          </div>
-          {isExpanded && 
-            <div className="CourseGroup">
-              <GroupSelector />
-              <AddScheduleButton />
-              <button className="TrashButton">
-                <FontAwesomeIcon 
-                    className="TrashIcon" 
-                    icon={faTrash} 
-                />
-              </button>    
-            </div>}
-      </div>   
+    <div className="CourseItem">
+      <button onClick={()=>{console.log(groups)}} value="hola">asdas</button>
+      <div className="CourseName">
+        <button onClick={handleExpand} type="button">
+          <FontAwesomeIcon className="ButtonIcon" icon={titleArrowIcon} style={{ color: "#ffffff", }} />
+        </button>
+        <div className="SubjectName">{name}</div>
+        <button onClick={AddGroup} className="AddGroupButton">
+          <FontAwesomeIcon
+            className="PlusIcon"
+            icon={faPlus}
+          />
+        </button>
+      </div>
+      <div className="GroupList">
+        {isExpanded && groups.map((value, index) => {
+          return <GroupItem group={groups[index]} key={index} onDeleteButton={() => onDeleteGroupItem(index)} />
+        })}
+      </div>
+    </div>
+
   )
 }
 

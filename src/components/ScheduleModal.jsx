@@ -6,11 +6,8 @@ import { faX } from '@fortawesome/free-solid-svg-icons'
 import CalendarToSelect from './CalendarToSelect';
 
 
-const ScheduleModal =  ({isOpen, onRequestClose }) => {
+const ScheduleModal =  ({onScheduleChange, isOpen, onRequestClose }) => {
 
-  const openModal = () => {
-    onRequestClose();
-  };
 
   const customStyles = {
     overlay: {
@@ -37,7 +34,7 @@ const ScheduleModal =  ({isOpen, onRequestClose }) => {
           <div className="modal-content">
             <a onClick={onRequestClose} className="modal-close-icon"><FontAwesomeIcon icon={faX} /></a>
             <h2>Selecciona el horario de la asignatura</h2>
-            <CalendarToSelect />
+            <CalendarToSelect onScheduleChange={onScheduleChange}/>
           </div>
         </section>
       </Modal>

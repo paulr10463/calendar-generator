@@ -1,20 +1,22 @@
-import '../styles/GroupSelector.css'
+import { useState, useEffect } from 'react';
+import '../styles/GroupSelector.css';
 
-function GroupSelector() {
+function GroupSelector({ initialGroupName, onSetGroupName }) {
+  const onValueSelected = (e) => {
+    onSetGroupName(e.target.value);
+  }
+
+  const [selectedValue, setSelectedValue] = useState(initialGroupName);
+
+  const groups = ["GR1", "GR2", "GR3", "GR4", "GR5", "GR6", "GR7", "GR8", "GR9", "GR10"];
+
   return (
-    <select className='GroupSelector'>
-        <option value="GR1">GR1</option>
-        <option value="GR2">GR2</option>
-        <option value="GR3">GR3</option>
-        <option value="GR4">GR4</option>
-        <option value="GR5">GR5</option>
-        <option value="GR6">GR6</option>
-        <option value="GR7">GR7</option>
-        <option value="GR8">GR8</option>
-        <option value="GR9">GR9</option>
-        <option value="GR10">GR10</option>
-  </select>
-  )
+    <select onChange={onValueSelected} value={selectedValue} className='GroupSelector'>
+      {groups.map((value) => (
+        <option key={value} value={value}>{value}</option>
+      ))}
+    </select>
+  );
 }
 
-export default GroupSelector
+export default GroupSelector;

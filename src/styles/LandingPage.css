@@ -14,6 +14,10 @@
     align-items: center;
 }
 
+.mainSection .addCourseSection .courseList{
+    width: 100%;
+}
+
 .mainSection .addCourseButton{
     background-color: rgb(50, 153, 108);
     width: 30%;
