@@ -45,7 +45,8 @@
     border-color: rgb(59, 187, 131);   
 }
 .mainSection .scheduleGenerated{
-    background-color: rgb(109, 64, 64);
+    background-color: rgb(64, 64, 64);
+    border-left: 3px solid rgb(39, 39, 39);
     width: 60%;
     height: 60vb;
 }

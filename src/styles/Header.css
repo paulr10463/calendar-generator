@@ -1,9 +1,8 @@
 .Header{
     width: 100%;
     color: white;
-    background-color: rgb(34, 33, 33);
-    text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: rgb(50, 153, 108);
+    background: linear-gradient(0deg, rgb(50, 153, 108) 0%, rgb(50, 153, 108) 100%);font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     height: 8vh;
     display: flex;
     justify-content: center;
