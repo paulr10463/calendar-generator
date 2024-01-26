@@ -1,4 +1,4 @@
-import '../styles/CalendarToSelect.css';
+import './CalendarToSelect.css';
 import { useState } from 'react';
 
 function CalendarToSelect(onScheduleChange) {

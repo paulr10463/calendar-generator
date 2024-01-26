@@ -1,10 +1,10 @@
-import '../styles/CourseItem.css'
+import './CourseItem.css'
 import { faAngleDown, faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Group from '../classes/Group'
-import GroupItem from './GroupItem'
+import Group from '../../classes/Models/Group'
+import GroupItem from '../GroupItemComponent/GroupItem'
 import { useState } from 'react'
-import Subject from '../classes/Subject'
+import Subject from '../../classes/Models/Subject'
 
 function CourseItem({name}) {
   const [isExpanded, setIsExpanded] = useState(false);

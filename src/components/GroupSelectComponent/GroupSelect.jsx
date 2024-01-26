@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import '../styles/GroupSelector.css';
+import './GroupSelector.css';
 
 function GroupSelector({ initialGroupName, onSetGroupName }) {
   const onValueSelected = (e) => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ScheduleModal from "./ScheduleModal";
-import '../styles/AddscheduleButton.css'
+import ScheduleModal from "../ScheduleModaComponent/ScheduleModal";
+import './AddscheduleButton.css'
 
 export default function AddScheduleButton({onScheduleChange}){
 

@@ -1,9 +1,9 @@
 
 import Modal from 'react-modal';
-import '../styles/modals.css'
+import './Modals.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons'
-import CalendarToSelect from './CalendarToSelect';
+import CalendarToSelect from '../CalendarToSelectComponent/CalendarToSelect';
 
 
 const ScheduleModal =  ({onScheduleChange, isOpen, onRequestClose }) => {

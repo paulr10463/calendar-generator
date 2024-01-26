@@ -18,20 +18,34 @@
     width: 100%;
 }
 
+.addCourseText{
+    font-size: 1em;
+    color: white;
+    margin-bottom: 5px;
+}
+.addCourseContainer__1__1{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+}
 .mainSection .addCourseButton{
     background-color: rgb(50, 153, 108);
     width: 20%;
+    min-width: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
     border-radius: 15px;
     border: none;
     cursor: pointer;
-    margin: 0px 10px 0px 10px;
     transition: all 0.3s ease-in-out;
+    height: 40px;
 }
 .mainSection .addCourseTextField{
     background-color: rgb(176, 176, 176);
-    width: 50%;
+    max-width: 250px;
+    width: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
     background-color: rgb(64, 64, 64);
@@ -40,6 +54,7 @@
     border: 2px solid rgb(50, 153, 108);
     outline: none;
     transition: all 0.3s ease-in-out;
+    margin-right: 5px;
 }
 .mainSection .addCourseButton:hover{
     background-color: rgb(59, 187, 131);
@@ -55,11 +70,17 @@
 .addCourseSection .addCourseContainer{
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
-    padding: 10px 0px 10px 0px;  
+    justify-content: space-around;
+    padding: 10px;  
+    align-items: center;
 }
-
-
+.addCourseSection .addCourseContainer__1{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    border: 2px solid rgb(50, 153, 108);
+    padding: 10px 20px 10px 10px;
+}
 .addCourse__name{
     width: 40%;
     display: flex;
