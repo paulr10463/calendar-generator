@@ -44,7 +44,7 @@
 }
 .mainSection .addCourseTextField{
     background-color: rgb(176, 176, 176);
-    max-width: 250px;
+    max-width: 400px;
     width: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
@@ -78,7 +78,6 @@
     display: flex;
     flex-direction: column;
     width: 95%;
-    border: 2px solid rgb(50, 153, 108);
     padding: 10px 20px 10px 10px;
 }
 .addCourse__name{

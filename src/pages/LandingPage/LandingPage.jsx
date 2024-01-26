@@ -29,7 +29,6 @@ function LandingPage() {
       <Header />
       <section className="mainSection">
         <aside className='addCourseSection'>
-
             <form className='addCourseContainer__1' onSubmit={(e) => e.preventDefault()}>
                 <label className="addCourseText" htmlFor="nombre materia">Nombre materia</label>
                 <div className='addCourseContainer__1__1'>
