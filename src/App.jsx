@@ -1,6 +1,6 @@
 import LandingPage from './pages/LandingPage/LandingPage'
 import { Provider } from 'react-redux';
-import store from './classes/Store';
+import store from './classes/Redux/Store';
 
 function App() {
 

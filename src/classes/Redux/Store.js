@@ -1,10 +1,10 @@
 // src/store.js
 import { configureStore } from '@reduxjs/toolkit';
-import subjectsSlice from './ScheduleSlice';
+import subjectsReducer from './ScheduleSlice';
 
 const store = configureStore({
   reducer: {
-    subject: subjectsSlice,
+    subjects: subjectsReducer,
   },
 });
 
