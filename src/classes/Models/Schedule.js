@@ -1,9 +1,7 @@
 
 export default class Schedule{
-    scheduleMatrix = [];
-
     constructor(){
-        
+        this.scheduleMatrix = [];
     }
 
     schedulesCrash(schedule){
@@ -30,5 +28,16 @@ export default class Schedule{
                 schedule.scheduleMatrix = schedule.mergeSchedules(schedule.scheduleMatrix, groupSchedule);
             }
         }
+    }
+
+    mergeSchedules(schedule1, schedule2){
+        let newSchedule = [];
+        for(let i = 0; i < schedule1.length; i++){
+            newSchedule[i] = [];
+            for(let j = 0; j < schedule1[i].length; j++){
+                newSchedule[i][j] = schedule1[i][j] || schedule2[i][j];
+            }
+        }
+        return newSchedule;
     }
 }

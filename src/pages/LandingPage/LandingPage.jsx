@@ -5,13 +5,8 @@ import CourseItem from '../../components/CourseItemComponent/CourseItem'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Subject from '../../classes/Models/Subject'
-import { useSelector } from 'react-redux'
-import { addSubject } from '../../classes/Redux/ScheduleSlice'
-import { useDispatch } from 'react-redux'
 
 function LandingPage() {
-  const subjectsRedux = useSelector((state) => state.subjects);
-  const dispatch = useDispatch();
   const [subjects, setSubjects] = useState([]);
 
   const AddSubject = () => {
@@ -23,9 +18,6 @@ function LandingPage() {
     const newSubject = new Subject(subjectName);
     setSubjects([...subjects, newSubject]);   
     document.getElementById('SubjetNameText').value = '';
-
-    dispatch(addSubject(subjectName))
-    console.log(subjectsRedux);
     //console.log(subjects);
   }
 
