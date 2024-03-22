@@ -4,11 +4,18 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import GroupSelector from '../GroupSelectComponent/GroupSelect'
 import Schedule from '../../classes/Models/Schedule'
+import { useAllSubjectsContext } from '../../contexts/AllSubjectsContext'
 
-function GroupItem({ group, onDeleteButton }) {
+function GroupItem({ groupIndex, onDeleteButton, subjectIndex }) {
+
+    const { subjects, setSubjects } = useAllSubjectsContext();
     const schedule = new Schedule();
+
     function setGroupName(name) {
-        group.name = name;
+        const newSubjects = [...subjects];
+        newSubjects[subjectIndex].groups[groupIndex].name = name;
+        newSubjects[subjectIndex].groups[groupIndex].schedule = schedule;
+        setSubjects(newSubjects);
     }
     function setSchedule(schedule) {
         group.schedule = schedule;

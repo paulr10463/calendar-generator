@@ -1,13 +1,14 @@
 import './LandingPage.css'
 import Header from '../../components/HeaderComponent/Header'
 import { useState } from 'react'
-import CourseItem from '../../components/CourseItemComponent/CourseItem'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Subject from '../../classes/Models/Subject'
+import { useAllSubjectsContext } from '../../contexts/AllSubjectsContext'
+import SubjectItem from '../../components/SubjectItemComponent/SubjectItem'
 
 function LandingPage() {
-  const [subjects, setSubjects] = useState([]);
+  const { subjects, setSubjects } = useAllSubjectsContext();
 
   const AddSubject = () => {
     const subjectName = document.getElementById('SubjetNameText').value;
@@ -40,7 +41,7 @@ function LandingPage() {
 
           <div className='courseList'>
             {subjects.map((subject, index) => {
-              return <CourseItem key={index} name={subject.name} />
+              return <SubjectItem key={index} name={subject.name} subjectIndex={index}/>
             })}
           </div>
 

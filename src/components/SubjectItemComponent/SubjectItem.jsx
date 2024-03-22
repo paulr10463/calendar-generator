@@ -1,16 +1,18 @@
-import './CourseItem.css'
+import './SubjectItem.css'
 import { faAngleDown, faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Group from '../../classes/Models/Group'
 import GroupItem from '../GroupItemComponent/GroupItem'
 import { useState } from 'react'
 import Subject from '../../classes/Models/Subject'
+import { useAllSubjectsContext } from '../../contexts/AllSubjectsContext'
 
-function CourseItem({name}) {
+function SubjectItem({name, subjectIndex}) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [titleArrowIcon, setTitleArrowIcon] = useState(faAngleRight);
   const [groups, setGroups] = useState([]);
-
+  const { subjects, setSubjects } = useAllSubjectsContext();
+  const subject = subjects[subjectIndex];
 
   const AddGroup = () => {
     const newGroup = new Group("GR1");
@@ -18,6 +20,8 @@ function CourseItem({name}) {
     setIsExpanded(true);
     setTitleArrowIcon(faAngleDown);
     console.log(groups);
+    subject.groups = groups;
+    console.log(subjects);    
   }
 
   const handleExpand = () => {
@@ -30,12 +34,9 @@ function CourseItem({name}) {
   }
 
   function onDeleteGroupItem(index) {
-    console.log("Index a borrar: " + index );
-    console.log(groups);
     const newGroups = [...groups];
     newGroups.splice(index, 1);
     setGroups(newGroups);
-    console.log(groups);
   }
 
   return (
@@ -54,7 +55,9 @@ function CourseItem({name}) {
       </div>
       <div className="GroupList">
         {isExpanded && groups.map((value, index) => {
-          return <GroupItem group={groups[index]} key={index} onDeleteButton={() => onDeleteGroupItem(index)} />
+          return( 
+              <GroupItem groupIndex={index} key={index} subjectIndex={subjectIndex} onDeleteButton={() => onDeleteGroupItem(index)} />
+          )
         })}
       </div>
     </div>
@@ -62,4 +65,4 @@ function CourseItem({name}) {
   )
 }
 
-export default CourseItem;
+export default SubjectItem;

@@ -2,8 +2,8 @@ import './CalendarToSelect.css';
 import { useState } from 'react';
 
 function CalendarToSelect(onScheduleChange) {
-  // Declaración del estado inicial de la matriz bidimensional
-  const [matriz, setMatriz] = useState([
+  // Declaración del estado inicial de la matrix bidimensional
+  const [matrix, setmatrix] = useState([
     [false, false, false, false, false, false],
     [false, false, false, false, false, false],
     [false, false, false, false, false, false],
@@ -19,9 +19,9 @@ function CalendarToSelect(onScheduleChange) {
     [false, false, false, false, false, false],
   ]);
 
-  // Ejemplo de cómo actualizar un valor en la matriz bidimensional
+  // Ejemplo de cómo actualizar un valor en la matrix bidimensional
   const actualizarValor = (fila, columna) => {
-    const nuevaMatriz = matriz.map((filaActual, index) => {
+    const nuevamatrix = matrix.map((filaActual, index) => {
       if (index === fila) {
         return filaActual.map((valor, colIndex) =>
           colIndex === columna ? !valor : valor
@@ -29,12 +29,12 @@ function CalendarToSelect(onScheduleChange) {
       }
       return filaActual;
     });
-    setMatriz(nuevaMatriz);
-    onScheduleChange(nuevaMatriz)
+    setmatrix(nuevamatrix);
+    onScheduleChange(nuevamatrix)
   };
 
-  /*const mostrarMatrizEnConsola = () => {
-    console.log(matriz);
+  /*const mostrarmatrixEnConsola = () => {
+    console.log(matrix);
   };*/
 
   return (
@@ -50,7 +50,7 @@ function CalendarToSelect(onScheduleChange) {
             <th>Viernes</th>
             <th>Sábado</th>
           </tr>
-          {matriz.map((fila, filaIndex) => (
+          {matrix.map((fila, filaIndex) => (
             <tr key={filaIndex}>
               <td className='hourCells'>
                 <input 

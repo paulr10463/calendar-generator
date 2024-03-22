@@ -2,9 +2,9 @@ import { createContext, useState, useContext } from "react";
 
 const SubjectContext = createContext({
   name: null,
-  setName: () => {},
+  setName: () => { },
   groups: null,
-  setGroups: () => {}
+  setGroups: () => { }
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
