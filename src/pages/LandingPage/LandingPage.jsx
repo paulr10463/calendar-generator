@@ -38,10 +38,12 @@ function LandingPage() {
                   </button>
                 </div>
             </form>
-
+            <button className="AddGroupButton" onClick={()=>{console.log(subjects)}}>
+            Print subjects
+          </button>
           <div className='courseList'>
             {subjects.map((subject, index) => {
-              return <SubjectItem key={index} name={subject.name} subjectIndex={index}/>
+              return <SubjectItem key={index} subjectIndex={index}/>
             })}
           </div>
 

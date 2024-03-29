@@ -33,10 +33,6 @@ function CalendarToSelect(onScheduleChange) {
     onScheduleChange(nuevamatrix)
   };
 
-  /*const mostrarmatrixEnConsola = () => {
-    console.log(matrix);
-  };*/
-
   return (
     <div>   
       <table className="calendarTable">

@@ -1,27 +1,24 @@
 import './SubjectItem.css'
-import { faAngleDown, faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faAngleRight, faPlus, faTrash, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Group from '../../classes/Models/Group'
-import GroupItem from '../GroupItemComponent/GroupItem'
 import { useState } from 'react'
-import Subject from '../../classes/Models/Subject'
+import GroupGroups from '../GroupsGroupComponent/GroupGroups'
 import { useAllSubjectsContext } from '../../contexts/AllSubjectsContext'
+import Group from '../../classes/Models/Group'
 
-function SubjectItem({name, subjectIndex}) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function SubjectItem({ subjectIndex }) {
   const [titleArrowIcon, setTitleArrowIcon] = useState(faAngleRight);
-  const [groups, setGroups] = useState([]);
+  const [isExpanded, setIsExpanded] = useState(false);
   const { subjects, setSubjects } = useAllSubjectsContext();
   const subject = subjects[subjectIndex];
+  const [groups, setGroups] = useState([]);
 
   const AddGroup = () => {
     const newGroup = new Group("GR1");
-    setGroups([...groups, newGroup]);
+    subject.groups.push(newGroup);
+    setGroups([...subject.groups]);
     setIsExpanded(true);
     setTitleArrowIcon(faAngleDown);
-    console.log(groups);
-    subject.groups = groups;
-    console.log(subjects);    
   }
 
   const handleExpand = () => {
@@ -33,10 +30,10 @@ function SubjectItem({name, subjectIndex}) {
     setIsExpanded(!isExpanded);
   }
 
-  function onDeleteGroupItem(index) {
-    const newGroups = [...groups];
-    newGroups.splice(index, 1);
-    setGroups(newGroups);
+  const handleDeleteSubject = () => {
+    const newSubjects = [...subjects];
+    newSubjects.splice(subjectIndex, 1);
+    setSubjects(newSubjects);
   }
 
   return (
@@ -45,24 +42,28 @@ function SubjectItem({name, subjectIndex}) {
         <button onClick={handleExpand} type="button">
           <FontAwesomeIcon className="ButtonIcon" icon={titleArrowIcon} style={{ color: "#ffffff", }} />
         </button>
-        <div className="SubjectName">{name}</div>
-        <button onClick={AddGroup} className="AddGroupButton">
-          <FontAwesomeIcon
-            className="PlusIcon"
-            icon={faPlus}
-          />
-        </button>
+        <div className="SubjectName">{subject.name}</div>
+        <div className='RightButtons'>
+          <button className="AddGroupButton" onClick={AddGroup}>
+            <FontAwesomeIcon
+              className="PlusIcon"
+              icon={faPlus}
+            />
+          </button>
+          <button onClick={handleDeleteSubject} className="TrashButton">
+            <FontAwesomeIcon
+              className="TrashIcon"
+              icon={faTrash}
+            />
+          </button>
+        </div>
       </div>
-      <div className="GroupList">
-        {isExpanded && groups.map((value, index) => {
-          return( 
-              <GroupItem groupIndex={index} key={index} subjectIndex={subjectIndex} onDeleteButton={() => onDeleteGroupItem(index)} />
-          )
-        })}
-      </div>
+      {isExpanded &&
+        <div className="GroupList">
+          <GroupGroups subjectIndex={subjectIndex} groupss={groups} />
+        </div>
+      }
     </div>
-
   )
 }
-
 export default SubjectItem;

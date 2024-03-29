@@ -1,4 +1,3 @@
-import Schedule from './Schedule.js';
 
 export default class Group{
     constructor(name){
