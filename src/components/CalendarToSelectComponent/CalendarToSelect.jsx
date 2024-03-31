@@ -1,8 +1,13 @@
 import './CalendarToSelect.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useGroupContext } from '../../contexts/GroupContext';
+import { useAllSubjectsContext } from '../../contexts/AllSubjectsContext';
 
 function CalendarToSelect(onScheduleChange) {
   // Declaración del estado inicial de la matrix bidimensional
+  const { subjects, setSubjects } = useAllSubjectsContext();
+  const { subjectIndexC, groupIndexC } = useGroupContext();
+  
   const [matrix, setmatrix] = useState([
     [false, false, false, false, false, false],
     [false, false, false, false, false, false],
@@ -21,6 +26,10 @@ function CalendarToSelect(onScheduleChange) {
 
   // Ejemplo de cómo actualizar un valor en la matrix bidimensional
   const actualizarValor = (fila, columna) => {
+    console.log(fila, columna);
+    console.log("Subject index: ", subjectIndexC);
+    console.log("Group index: ", groupIndexC);
+
     const nuevamatrix = matrix.map((filaActual, index) => {
       if (index === fila) {
         return filaActual.map((valor, colIndex) =>
@@ -30,8 +39,17 @@ function CalendarToSelect(onScheduleChange) {
       return filaActual;
     });
     setmatrix(nuevamatrix);
-    onScheduleChange(nuevamatrix)
   };
+
+  useEffect(() => { 
+    const newSubjects = [...subjects];
+    // Actualizar la matriz de horarios en la copia del array
+    if (newSubjects[subjectIndexC] && newSubjects[subjectIndexC].groups[groupIndexC]) {
+      newSubjects[subjectIndexC].groups[groupIndexC].scheduleMatrix = matrix;
+    }
+    setSubjects(newSubjects);
+  }
+  , [matrix]);
 
   return (
     <div>   

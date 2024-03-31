@@ -6,7 +6,7 @@ import { faX } from '@fortawesome/free-solid-svg-icons'
 import CalendarToSelect from '../CalendarToSelectComponent/CalendarToSelect';
 
 
-const ScheduleModal =  ({onScheduleChange, isOpen, onRequestClose }) => {
+const ScheduleModal = ({ onScheduleChange, isOpen, onRequestClose }) => {
 
 
   const customStyles = {
@@ -32,9 +32,11 @@ const ScheduleModal =  ({onScheduleChange, isOpen, onRequestClose }) => {
       >
         <section>
           <div className="modal-content">
-            <a onClick={onRequestClose} className="modal-close-icon"><FontAwesomeIcon icon={faX} /></a>
+            <a onClick={onRequestClose} className="modal-close-icon">
+              <FontAwesomeIcon icon={faX} />
+            </a>
             <h2>Selecciona el horario de la asignatura</h2>
-            <CalendarToSelect onScheduleChange={onScheduleChange}/>
+            <CalendarToSelect onScheduleChange={onScheduleChange} />
           </div>
         </section>
       </Modal>

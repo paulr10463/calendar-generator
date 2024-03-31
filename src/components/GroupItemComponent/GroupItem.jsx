@@ -5,51 +5,71 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useAllSubjectsContext } from '../../contexts/AllSubjectsContext'
 import { useEffect, useState } from 'react'
 
-function GroupSelector({ initialGroupName, onSetGroupName }) {
-  const onValueSelected = (e) => {
-    onSetGroupName(e.target.value);
-  }
-
-  const [selectedValue, setSelectedValue] = useState(initialGroupName);
-
-  const groups = ["GR1", "GR2", "GR3", "GR4", "GR5", "GR6", "GR7", "GR8", "GR9", "GR10"];
-
-  return (
-    <select onChange={onValueSelected} value={selectedValue} className='GroupSelector'>
-      {groups.map((value) => (
-        <option key={value} value={value}>{value}</option>
-      ))}
-    </select>
-  );
-}
-
+import { useGroupContext } from '../../contexts/GroupContext'
 export default function GroupItem({ subjectIndex, groupIndex, group }) {
   const { subjects, setSubjects } = useAllSubjectsContext();
-  const actualGroup = subjects[subjectIndex].groups[groupIndex];
+  const [selectedValue, setSelectedValue] = useState("GR1");
+  const GRNames = ["GR1", "GR2", "GR3", "GR4", "GR5", "GR6", "GR7", "GR8", "GR9", "GR10"];
+  const { subjectIndexC, setSubjectIndexC, groupIndexC, setGroupIndexC } = useGroupContext();
+
+  const onGRValueSelected = (e) => {
+    console.log(subjectIndex)
+    console.log(groupIndex)
+
+    const GRValue = e.target.value;
+    setSelectedValue(GRValue);
+  }
+
+  const changeScheduleMatrix = (newMatrix) => {
+    setScheduleMatrix(newMatrix);
+  }
 
   useEffect(() => {
-    console.log("GroupItem useEffect");
-  }, [actualGroup, group]);
+    setSubjectIndexC(subjectIndex);
+    setGroupIndexC(groupIndex);
+  }, []);
   
-  const subject = subjects[subjectIndex];
+  useEffect(() => {
+    const newSubjects = [...subjects];
+    // Actualizar el nombre del grupo en la copia del array
+    if (newSubjects[subjectIndex] && newSubjects[subjectIndex].groups[groupIndex]) {
+      newSubjects[subjectIndex].groups[groupIndex].name = selectedValue;
+    }
+      setSubjects(newSubjects);
+    }, [selectedValue]);
+
+    /*useEffect(() => {
+      const newSubjects = [...subjects];
+      // Actualizar la matriz de horarios en la copia del array
+      if (newSubjects[subjectIndex] && newSubjects[subjectIndex].groups[groupIndex]) {
+        newSubjects[subjectIndex].groups[groupIndex].scheduleMatrix = scheduleMatrix;
+      }
+      setSubjects(newSubjects);
+    }, [scheduleMatrix]);*/
 
   const onDeleteButton = () => {
     subjects[subjectIndex].groups.splice(groupIndex, 1);
     console.log(subjects[subjectIndex].groups);
     setSubjects([...subjects]);
   }
-  
+
   return (
-    <div className="GroupItem">
-      <AddScheduleButton onScheduleChange={() => { }} />
-      <GroupSelector initialGroupName={subject.name!=undefined&&subject.name} onSetGroupName={() => { }} />
-      <button onClick={onDeleteButton} className="TrashButton">
-        <FontAwesomeIcon
-          className="TrashIcon"
-          icon={faTrash}
-        />
-      </button>
-    </div>
+    
+      <div className="GroupItem">
+        <AddScheduleButton/>
+        <select onChange={onGRValueSelected} value={selectedValue} className='GroupSelector'>
+          {GRNames.map((value) => (
+            <option key={value} value={value}>{value}</option>
+          ))}
+        </select>
+        <button onClick={onDeleteButton} className="TrashButton">
+          <FontAwesomeIcon
+            className="TrashIcon"
+            icon={faTrash}
+          />
+        </button>
+      </div>
+    
   );
 }
 
