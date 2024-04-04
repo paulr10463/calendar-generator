@@ -2,29 +2,13 @@ import './CalendarToSee.css';
 import { useState } from 'react';
 
 
-function CalendarToSee() {
-  
-  const [matrix, setmatrix] = useState([
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-    ["", "", "", "", "", ""],
-  ]);
-
+function CalendarToSee({matrix}) {
+  console.log(matrix);
   return (
-    <div className='CalendarToSee'>   
+    <div className="calendarToSee">
       <table className="calendarTable">
         <tbody>
-          <tr className='titlesRow'>
+          <tr className="titlesRow">
             <th>Hora</th>
             <th>Lunes</th>
             <th>Martes</th>
@@ -42,12 +26,14 @@ function CalendarToSee() {
                   disabled
                 />
               </td>
-              {fila.map((valor, columnaIndex) => (
-                <td key={columnaIndex}>
-                    type="button"
-                  <div>
-                    className={valor ? "calendarButton-selected" : "calendarButton"}
-                  </div>
+              {fila.map((columna, colIndex) => (
+                <td key={colIndex} >
+                  <input
+                  className= {columna === ""?'calendarCell':'calendarCell-selected'}
+                    type="text"
+                    value={columna}
+                    disabled
+                  />
                 </td>
               ))}
             </tr>

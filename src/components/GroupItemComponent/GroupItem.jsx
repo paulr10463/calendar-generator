@@ -33,7 +33,7 @@ export default function GroupItem({ subjectIndex, groupIndex, group }) {
     const newSubjects = [...subjects];
     // Actualizar el nombre del grupo en la copia del array
     if (newSubjects[subjectIndex] && newSubjects[subjectIndex].groups[groupIndex]) {
-      newSubjects[subjectIndex].groups[groupIndex].name = selectedValue;
+      newSubjects[subjectIndex].groups[groupIndex].groupName = selectedValue;
     }
       setSubjects(newSubjects);
     }, [selectedValue]);

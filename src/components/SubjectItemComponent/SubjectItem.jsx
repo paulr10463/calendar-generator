@@ -14,7 +14,8 @@ function SubjectItem({ subjectIndex }) {
   const [groups, setGroups] = useState([]);
 
   const AddGroup = () => {
-    const newGroup = new Group("GR1");
+    const subjectName = subject.name;
+    const newGroup = new Group(subjectName, "GR1");
     subject.groups.push(newGroup);
     setGroups([...subject.groups]);
     setIsExpanded(true);

@@ -7,22 +7,9 @@ function CalendarToSelect(onScheduleChange) {
   // Declaración del estado inicial de la matrix bidimensional
   const { subjects, setSubjects } = useAllSubjectsContext();
   const { subjectIndexC, groupIndexC } = useGroupContext();
-  
-  const [matrix, setmatrix] = useState([
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-    [false, false, false, false, false, false],
-  ]);
+  const groupMatrix = subjects[subjectIndexC].groups[groupIndexC].scheduleMatrix;
+  const subjectwithGR = subjects[subjectIndexC].groups[groupIndexC].subjectName + " " + subjects[subjectIndexC].groups[groupIndexC].groupName;
+  const [matrix, setmatrix] = useState(groupMatrix);
 
   // Ejemplo de cómo actualizar un valor en la matrix bidimensional
   const actualizarValor = (fila, columna) => {
@@ -79,6 +66,7 @@ function CalendarToSelect(onScheduleChange) {
                     type="button"
                     className={valor ? "calendarButton-selected" : "calendarButton"}
                     onClick={() => actualizarValor(filaIndex, columnaIndex)}
+                    value={valor ? subjectwithGR : ""}
                   />
                 </td>
               ))}

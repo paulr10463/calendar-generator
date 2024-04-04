@@ -29,6 +29,7 @@ const ScheduleModal = ({ onScheduleChange, isOpen, onRequestClose }) => {
         onRequestClose={onRequestClose}
         style={customStyles}
         contentLabel="Ejemplo Modal"
+        appElement={document.getElementById('root')}
       >
         <section>
           <div className="modal-content">

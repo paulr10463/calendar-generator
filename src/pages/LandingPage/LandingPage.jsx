@@ -10,6 +10,22 @@ import CalendarToSee from '../../components/CalendarToSeeComponent/CalendarToSee
 
 function LandingPage() {
   const { subjects, setSubjects } = useAllSubjectsContext();
+  const [finalSchedules, setFinalSchedules] = useState([]);
+
+  const emptySchedule = [ 
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],
+    ["", "", "", "", "", ""],];
 
   const AddSubject = () => {
     const subjectName = document.getElementById('SubjetNameText').value;
@@ -22,32 +38,39 @@ function LandingPage() {
     document.getElementById('SubjetNameText').value = '';
   }
 
-  const handleGenerateSchedule = () => {
-    function buclesRecursivos(iteradores, indice = 0, resultadoParcial = [], resultadosFinales = []) {
-      if (indice === iteradores.length) {
-          // Si hemos alcanzado el final de la lista de iteradores,
-          // hemos terminado de iterar y agregamos el resultado parcial
-          // a los resultados finales.
-          resultadosFinales.push(resultadoParcial);
-      } else {
-          // Iteramos sobre el iterador actual
-          for (let elemento of iteradores[indice]) {
-              // Creamos una nueva lista que contiene los resultados
-              // acumulados hasta este punto más el elemento actual.
-              let nuevoResultado = [...resultadoParcial, elemento];
-              // Llamamos recursivamente a la función para procesar
-              // los siguientes iteradores.
-              buclesRecursivos(iteradores, indice + 1, nuevoResultado, resultadosFinales);
-          }
-      }
-      return resultadosFinales;
-  }
-  
-  // Ejemplo de uso
-  const iteradores = [[1, 2], [3, 4, 5], [6, 7]];
-  const resultado = buclesRecursivos(iteradores);
-  console.log(resultado);
-  
+  function generateSchedule(subjectsList, indice = 0, resultadoParcial = [], horarioParcial= emptySchedule, resultadosFinales = []) {
+        if (indice === subjectsList.length) {
+            // Si hemos alcanzado el final de la lista de iteradores,
+            // hemos terminado de iterar y agregamos el resultado parcial
+            // a los resultados finales.
+            resultadosFinales.push(horarioParcial);
+        } else {
+            // Iteramos sobre el iterador actual
+            for (let group of subjectsList[indice].groups) {
+                const newHorarioParcial = JSON.parse(JSON.stringify(horarioParcial));
+                for (let i = 0; i < group.scheduleMatrix.length; i++) {
+                  for (let j = 0; j < group.scheduleMatrix[i].length; j++) {
+                    if (horarioParcial[i][j] === "" && group.scheduleMatrix[i][j] === true) {
+                      newHorarioParcial[i][j] = group.subjectName + " " + group.groupName;
+                    } else if (horarioParcial[i][j] !== "" && group.scheduleMatrix[i][j] === true) {
+                      newHorarioParcial[i][j] = "Crash";
+                    }
+                  }
+                }
+                const newResultadoParcial = [...resultadoParcial, group.subjectName + " " + group.groupName];
+                generateSchedule(subjects, indice + 1, newResultadoParcial, newHorarioParcial, resultadosFinales);
+            }
+        }
+        return resultadosFinales;
+    }
+
+  const onHandleGenerateSchedule = () => {  
+    const resultado = generateSchedule(subjects);
+    const resultadosSinCrash = resultado.filter((horario) => {
+      return !horario.flat().includes("Crash");
+    });
+    console.log(resultadosSinCrash);
+    setFinalSchedules(resultadosSinCrash);
   }
 
   return (
@@ -68,7 +91,7 @@ function LandingPage() {
             <button className="addCourseButton" style={{marginBottom: "1rem"}} onClick={() => { console.log(subjects) }}>
               Imprime Materias
             </button>
-            <button className="addCourseButton" style={{marginBottom: "1rem"}} onClick={handleGenerateSchedule}>
+            <button className="addCourseButton" style={{marginBottom: "1rem"}} onClick={onHandleGenerateSchedule}>
               Generar Horario
             </button>
           </div>
@@ -80,7 +103,11 @@ function LandingPage() {
 
         </aside>
         <aside className='scheduleGenerated'>
-          <CalendarToSee />
+            {finalSchedules.map((schedule, index) => {
+              return <CalendarToSee key={index} matrix={schedule} />
+            }
+            )}
+          
         </aside>
       </section>
     </>

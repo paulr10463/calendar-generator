@@ -1,4 +1,12 @@
+
+:root{
+    --background-color: #F8F9FA;
+    --text-color: #495057;
+    --text-color-secondary: #6C757D;
+    --primary-color-text: #ffff;
+}
 body{
     margin: 0px;
     padding: 0px;
+    background-color: rgb(64, 64, 64);
 }
