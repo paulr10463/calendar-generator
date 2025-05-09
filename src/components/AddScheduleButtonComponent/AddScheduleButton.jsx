@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ScheduleModal from "../ScheduleModaComponent/ScheduleModal";
-import './AddscheduleButton.css'
+import './AddScheduleButton.css'
 
 export default function AddScheduleButton({ onScheduleChange }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
