@@ -1,12 +1,28 @@
-
-:root{
-    --background-color: #F8F9FA;
-    --text-color: #495057;
-    --text-color-secondary: #6C757D;
-    --primary-color-text: #ffff;
+/* Light Mode (default) */
+:root {
+    --background-color: #ffffff;
+    --background-color-hover: #f8f9fa;
+    --primary-color-text: #000000;
+    --secondary-color-text: #3e3e3e;
+    --secondary-color: rgb(241, 241, 241);
+    --border-color: #CED4DA;
 }
-body{
+
+/* Dark Mode overrides */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #121212;
+        --background-color-hover: #1e1e1e;
+        --primary-color-text: #ffffff;
+        --secondary-color-text: #c8d1d9;
+        --secondary-color: #2c2c2c;
+        --border-color: #333333;
+    }
+}
+
+body {
     margin: 0px;
     padding: 0px;
-    background-color: rgb(64, 64, 64);
+    background-color: var(--background-color);
+    color: var(--primary-color-text);
 }

@@ -1,5 +1,5 @@
 .mainSection{
-    background-color: black;
+    background-color: var(--background-color);
     width: 100%;
     height: 100%;
     display: flex;
@@ -7,7 +7,7 @@
 }
 
 .mainSection .addCourseSection{
-    background-color: rgb(64, 64, 64);
+    background-color: var(--background-color);
     width: 40%;
     height: 100%;
     display: flex;
@@ -22,7 +22,6 @@
 
 .addCourseText{
     font-size: 1em;
-    color: white;
     margin-bottom: 5px;
 }
 .addCourseContainer__1__1{
@@ -33,11 +32,11 @@
     align-items: center;
 }
 .mainSection .addCourseButton{
-    background-color: rgb(50, 153, 108);
+    background-color: var(--secondary-color);
+    color: var(--primary-color-text);
     width: 20%;
     min-width: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: white;
     border-radius: 15px;
     border: none;
     cursor: pointer;
@@ -49,11 +48,10 @@
     max-width: 400px;
     width: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: white;
-    background-color: rgb(64, 64, 64);
+    background-color: var(----background-color);
     padding: 10px;
     border-radius: 15px;
-    border: 2px solid rgb(50, 153, 108);
+    border: 2px solid var(--secondary-color);
     outline: none;
     transition: all 0.3s ease-in-out;
     margin-right: 5px;
@@ -65,8 +63,8 @@
     border-color: rgb(59, 187, 131);   
 }
 .mainSection .scheduleGenerated{
-    background-color: rgb(64, 64, 64);
-    border-left: 3px solid rgb(39, 39, 39);
+    background-color: var(----background-color);
+    border-left: 1px solid var(--border-color);
     width: 60%;
 }
 .addCourseSection .addCourseContainer{
@@ -88,5 +86,4 @@
     justify-content: center;
     align-items: center;
     font-size: 1em;
-    color: white;
 }

@@ -1,14 +1,17 @@
 .Header{
     width: 100%;
-    color: white;
-    background: rgb(50, 153, 108);
-    background: linear-gradient(0deg, rgb(50, 153, 108) 0%, rgb(50, 153, 108) 100%);font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--primary-color-text);
+    background: var(--secondary-color);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
+    padding: 20px 0;
+    font-weight: 400;
 }
 .Header h1{
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-weight: 200;
 }

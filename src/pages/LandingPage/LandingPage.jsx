@@ -83,14 +83,11 @@ function LandingPage() {
             <div className='addCourseContainer__1__1'>
               <input className="addCourseTextField" id='SubjetNameText' type="text" placeholder="Auditoría, Usabilidad" />
               <button className="addCourseButton" type='submit' onClick={AddSubject}>
-                <FontAwesomeIcon className="ButtonIcon" icon={faPlus} style={{ color: "#ffffff", }} />
+                <FontAwesomeIcon className="ButtonIcon" icon={faPlus} />
               </button>
             </div>
           </form>
           <div style={{display:"flex", width:"100%", justifyContent:"center", gap:"1rem"}}>
-            <button className="addCourseButton" style={{marginBottom: "1rem"}} onClick={() => { console.log(subjects) }}>
-              Imprime Materias
-            </button>
             <button className="addCourseButton" style={{marginBottom: "1rem"}} onClick={onHandleGenerateSchedule}>
               Generar Horario
             </button>

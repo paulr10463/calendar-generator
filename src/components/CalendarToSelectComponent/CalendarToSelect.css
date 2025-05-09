@@ -2,12 +2,9 @@
     border-collapse: collapse;
     width: 100%; 
     margin: 20px auto;
-    background-color: white;
 }
 
 .calendarButton{
-    background-color: #333;
-    color: white;
     width: 100%;
     min-width: 5rem;
     height: 20px;
@@ -16,14 +13,14 @@
 }
 .hourCells{
     background-color: #a38a8a;
-    color: rgb(181, 186, 36);
+    color: var(--secondary-color-text);
     width: 7em;
     height: 20px;
     border-style: none;
 }
 .hourCells input{
-    background-color: rgb(64, 64, 64);
-    color: rgb(250, 250, 250);
+    background-color: var(--background-color);
+    color: var(--secondary-color-text);
     width: 7em;
     height: 18px;
     font-size: 10px;
@@ -31,7 +28,7 @@
     text-align: center;
 }
 .calendarButton:hover{
-    background-color: #696969;
+    background-color: var(--background-color-hover);
 }
 .calendarButton-selected{
     background-color: #369d68;
@@ -61,8 +58,7 @@ table {
 }
 
 .titlesRow {
-    background-color: rgb(64, 64, 64);
-    color: white;
+    background-color: var(----background-color);
     font-weight: bold;
     font-size: 10px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

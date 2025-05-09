@@ -41,7 +41,7 @@ function SubjectItem({ name, subjectIndex }) {
     <div className="CourseItem">
       <div className="CourseName">
         <button onClick={handleExpand} type="button">
-          <FontAwesomeIcon className="ButtonIcon" icon={titleArrowIcon} style={{ color: "#ffffff", }} />
+          <FontAwesomeIcon className="ButtonIcon" icon={titleArrowIcon} />
         </button>
         <div className="SubjectName">{name}</div>
         <button onClick={AddGroup} className="AddGroupButton">
